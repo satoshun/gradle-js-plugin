@@ -25,12 +25,12 @@ class JsMinifier {
         CompilationLevel.valueOf(compilationLevel).setOptionsForCompilationLevel(options)
         WarningLevel level = WarningLevel.valueOf(warningLevel)
         level.setOptionsForWarningLevel(options)
-        List<SourceFile> externs = CommandLineRunner.getBuiltinExterns(new CompilerOptions());
+        List<SourceFile> externs = CommandLineRunner.getBuiltinExterns(CompilerOptions.Environment.BROWSER);
         if (externsFiles.size()) {
             externs.addAll(externsFiles.collect() { SourceFile.fromFile(it) })
         }
         List<SourceFile> inputs = new ArrayList<SourceFile>()
-        inputFiles.each { inputFile -> 
+        inputFiles.each { inputFile ->
           inputs.add(SourceFile.fromFile(inputFile))
         }
         Result result = compiler.compile(externs, inputs, options)

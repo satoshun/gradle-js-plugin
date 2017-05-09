@@ -15,7 +15,7 @@ targetCompatibility = 1.6
 
 defaultTasks 'clean', 'build'
 
-version = '2.14.1'
+version = '222.111.000'
 group = 'com.eriwen'
 ext.archivesBaseName = 'gradle-js-plugin'
 ext.isSnapshot = version.endsWith("-SNAPSHOT")
@@ -94,6 +94,11 @@ publishing {
             artifact groovydocJar {
                 classifier 'javadoc'
             }
+        }
+    }
+    repositories {
+        maven {
+            url "file:/${project.projectDir}/artifacts"
         }
     }
 }
